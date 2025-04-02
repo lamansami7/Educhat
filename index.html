@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduChat - Educational Chat Platform</title>
+
+    <!-- CSS Styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        #header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        #main-content {
+            margin: 20px;
+        }
+        #login input {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #chat {
+            display: none;
+            margin-top: 20px;
+        }
+        #chatbox {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 200px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Header -->
+    <div id="header">
+        <h1>Welcome to EduChat</h1>
+        <p>Your platform to learn and connect with others.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <h2>Start Your Learning Journey</h2>
+        <p>Access educational content and chat with peers after entering the access code.</p>
+
+        <!-- Educational Content (Math Worksheet) -->
+        <div id="education-section">
+            <h3>Math Worksheet</h3>
+            <ul>
+                <li>1. What is 12 + 8?</li>
+                <li>2. Solve for x: 2x + 5 = 11</li>
+                <li>3. Simplify: 15 ÷ 3</li>
+            </ul>
+        </div>
+
+        <!-- Login for Chat Access -->
+        <div id="login">
+            <h2>Enter the Access Code to Start Chat</h2>
+            <input type="password" id="accessCode" placeholder="Enter Code">
+            <button onclick="checkCode()">Enter</button>
+        </div>
+
+        <!-- Chat Room (hidden initially) -->
+        <div id="chat">
+            <h1>Chat Room</h1>
+            <div id="chatbox"></div>
+            <input type="text" id="messageInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Functionality -->
+    <script>
+        // Function to check the entered access code
+        function checkCode() {
+            let code = document.getElementById("accessCode").value;
+            if (code === "1234") {
+                alert("Access granted!");
+                document.getElementById("chat").style.display = "block"; // Show chat room
+            } else {
+                alert("Invalid access code!");
+            }
+        }
+
+        // Function to send a chat message
+        function sendMessage() {
+            let message = document.getElementById("messageInput").value;
+            if (message) {
+                let chatbox = document.getElementById("chatbox");
+                let newMessage = document.createElement("p");
+                newMessage.textContent = message;
+                chatbox.appendChild(newMessage); // Add the message to chatbox
+                document.getElementById("messageInput").value = ""; // Clear the input field
+            }
+        }
+    </script>
+</body>
+</html>
